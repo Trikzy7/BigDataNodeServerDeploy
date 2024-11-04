@@ -5,7 +5,7 @@ const validator = require('validator');
 
 
 exports.receiveHrData = (req, res, next) => {
-    res.status(200).json({ message: 'Test method !'});
+    res.status(200).json({ message: 'Test prouuuuut !'});
 }
 
 // CREATE
