@@ -33,6 +33,6 @@ app.use((req, res, next) => {
 
 
 // ROUTES
-app.use("/api/user", userRoutes);
+app.use("/api/heart-rate", userRoutes);
 
 module.exports = app;
