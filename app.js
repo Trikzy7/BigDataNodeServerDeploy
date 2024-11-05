@@ -4,7 +4,7 @@ const router = express.Router();
 
 const app = express();
 
-const userRoutes = require("./routes/user");
+const heartRateRoutes = require("./routes/heart-rate");
 
 // BDD Connexion
 const url =
@@ -33,6 +33,6 @@ app.use((req, res, next) => {
 
 
 // ROUTES
-app.use("/api/heart-rate", userRoutes);
+app.use("/api/heart-rate", heartRateRoutes);
 
 module.exports = app;
