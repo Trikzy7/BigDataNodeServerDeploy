@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const HeartRate = require('../models/heart-rate');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
@@ -11,6 +11,18 @@ exports.receiveHrData = (req, res, next) => {
 
     res.status(200).json({ message: 'Test prouuuuut !'});
 }
+
+exports.insertMongoDB = (req, res, next) => {
+    const heartRate = new HeartRate({
+        timestamp: new Date(),
+        value: req.body.hr
+    });
+
+    heartRate.save()
+    .then(() => res.status(201).json({ message: 'HeartRate well put in MongoDB !'}))
+    .catch(error => res.status(400).json({ error }));
+}
+
 
 // // CREATE
 // exports.createUser = (req, res, next) => {
