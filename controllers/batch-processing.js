@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const HeartRate = require("./models/heart-rate"); // Raw data model
-const Summary = require("./models/summary"); // New model for summaries
+const HeartRate = require("../models/heart-rate"); // Raw data model
+const Summary = require("../models/heart-rate-summary"); // New model for summaries
 
 const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_data?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -8,13 +8,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error("Failed to connect to MongoDB", error));
 
-const summarySchema = mongoose.Schema({
-  interval: { type: String, required: true }, // 'minute' or 'hour'
-  timestamp: { type: Number, required: true }, // Start of the interval
-  average: { type: Number, required: true }, // Average heart rate
-});
 
-const Summary = mongoose.model("Summary", summarySchema);
 
 // Calculate averages for a given interval
 async function calculateAverage(interval) {
