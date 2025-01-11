@@ -12,7 +12,7 @@ const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_
     // "mongodb://tplebani:info734@193.48.125.44/tplebani?authMechanism=DEFAULT&authSource=admin";
 
 mongoose
-  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true, tls: true, tlsAllowInvalidCertificates: true })
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
