@@ -52,7 +52,7 @@ const { fork } = require("child_process");
 
 cron.schedule("* * * * *", () => { // Run every minute
   console.log("Starting batch processing...");
-  const batchProcess = fork("./batch-processing.js");
+  const batchProcess = fork("../controllers/batch-processing.js");
   batchProcess.on("exit", () => console.log("Batch processing completed."));
 });
 
