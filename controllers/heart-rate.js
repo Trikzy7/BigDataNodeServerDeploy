@@ -22,8 +22,17 @@ exports.insertMongoDB = (req, res, next) => {
     console.log(req.body);
 
     heartRate.save()
-    .then(() => res.status(201).json({ message: 'HeartRate well put in MongoDB !'}))
-    .catch(error => res.status(400).json({ error }));
+    .then(() => {
+        console.log("HeartRate well put in MongoDB !");
+        res.status(201).json({ message: 'HeartRate well put in MongoDB !'});
+        
+        }
+    )
+    .catch(error => {
+        console.log(error);
+        res.status(400).json({ error });
+        }
+    );
 }
 
 
