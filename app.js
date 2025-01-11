@@ -38,7 +38,7 @@ app.use("/api/heart-rate", heartRateRoutes);
 
 // BATCH SCHEDULE
 const cron = require("node-cron");
-const { calculateAverage } = require("./batch-processing");
+const { calculateAverage } = require("./controllers/batch-processing");
 
 // Schedule batch processing for every minute
 cron.schedule("* * * * *", async () => {
