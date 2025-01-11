@@ -7,7 +7,7 @@ const app = express();
 const heartRateRoutes = require("./routes/heart-rate");
 
 // BDD Connexion
-const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_data?retryWrites=true&w=majority&appName=Cluster0";
 
     // "mongodb://tplebani:info734@193.48.125.44/tplebani?authMechanism=DEFAULT&authSource=admin";
 
@@ -35,5 +35,17 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use("/api/heart-rate", heartRateRoutes);
+
+// BATCH SCHEDULE
+const cron = require("node-cron");
+const { calculateAverage } = require("./batch-processing");
+
+// Schedule batch processing for every minute
+cron.schedule("* * * * *", async () => {
+  console.log("Running batch processing...");
+  await calculateAverage("minute");
+  await calculateAverage("hour");
+});
+
 
 module.exports = app;
