@@ -7,7 +7,7 @@ const app = express();
 const heartRateRoutes = require("./routes/heart-rate");
 
 // BDD Connexion
-const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net";
+const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_data?retryWrites=true&w=majority&appName=Cluster0";
 
     // "mongodb://tplebani:info734@193.48.125.44/tplebani?authMechanism=DEFAULT&authSource=admin";
 
