@@ -48,7 +48,7 @@ async function calculateAverage(interval) {
 async function runBatchProcessing() {
   await calculateAverage("minute");
   await calculateAverage("hour");
-  mongoose.connection.close();
+  // mongoose.connection.close();
 }
 
 runBatchProcessing();
