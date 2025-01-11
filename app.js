@@ -37,24 +37,24 @@ app.use((req, res, next) => {
 app.use("/api/heart-rate", heartRateRoutes);
 
 // BATCH SCHEDULE
-// const cron = require("node-cron");
-// const { calculateAverage } = require("./controllers/batch-processing");
-
-// // Schedule batch processing for every minute
-// cron.schedule("* * * * *", async () => {
-//   console.log("Running batch processing...");
-//   await calculateAverage("minute");
-//   await calculateAverage("hour");
-// });
-
 const cron = require("node-cron");
-const { fork } = require("child_process");
+const { calculateAverage } = require("./controllers/batch-processing");
 
-cron.schedule("* * * * *", () => { // Run every minute
-  console.log("Starting batch processing...");
-  const batchProcess = fork("../controllers/batch-processing");
-  batchProcess.on("exit", () => console.log("Batch processing completed."));
+// Schedule batch processing for every minute
+cron.schedule("* * * * *", async () => {
+  console.log("Running batch processing...");
+  await calculateAverage("minute");
+  await calculateAverage("hour");
 });
+
+// const cron = require("node-cron");
+// const { fork } = require("child_process");
+
+// cron.schedule("* * * * *", () => { // Run every minute
+//   console.log("Starting batch processing...");
+//   const batchProcess = fork("../controllers/batch-processing");
+//   batchProcess.on("exit", () => console.log("Batch processing completed."));
+// });
 
 
 module.exports = app;
