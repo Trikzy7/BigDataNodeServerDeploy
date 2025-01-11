@@ -41,11 +41,11 @@ const cron = require("node-cron");
 const { calculateAverage } = require("./controllers/batch-processing");
 
 // Schedule batch processing for every minute
-cron.schedule("* * * * *", async () => {
-  console.log("Running batch processing...");
-  await calculateAverage("minute");
-  await calculateAverage("hour");
-});
+// cron.schedule("* * * * *", async () => {
+//   console.log("Running batch processing...");
+//   await calculateAverage("minute");
+//   await calculateAverage("hour");
+// });
 
 
 module.exports = app;
