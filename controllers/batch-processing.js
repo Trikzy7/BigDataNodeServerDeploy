@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const HeartRate = require("../models/heart-rate"); // Raw data model
 const Summary = require("../models/heart-rate-summary"); // New model for summaries
 
-const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_data?retryWrites=true&w=majority&appName=Cluster0";
+const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_data";
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
