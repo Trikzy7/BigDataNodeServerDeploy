@@ -9,8 +9,6 @@ const heartRateRoutes = require("./routes/heart-rate");
 // BDD Connexion
 const url = "mongodb+srv://theo:theopassword@cluster0.bmdk5.mongodb.net/cleaned_data";
 
-    // "mongodb://tplebani:info734@193.48.125.44/tplebani?authMechanism=DEFAULT&authSource=admin";
-
 mongoose
   .connect(url, { useNewUrlParser: true, useUnifiedTopology: true, tls: true, tlsAllowInvalidCertificates: true })
   .then(() => console.log("Connexion à MongoDB réussie !"))
@@ -45,15 +43,5 @@ cron.schedule("* * * * *", async () => {
   console.log("Running batch processing...");
   await calculateAverage("minute");
 });
-
-// const cron = require("node-cron");
-// const { fork } = require("child_process");
-
-// cron.schedule("* * * * *", () => { // Run every minute
-//   console.log("Starting batch processing...");
-//   const batchProcess = fork("../controllers/batch-processing");
-//   batchProcess.on("exit", () => console.log("Batch processing completed."));
-// });
-
 
 module.exports = app;
